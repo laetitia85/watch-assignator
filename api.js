@@ -8,8 +8,8 @@ let studentTab = [];                                              //initialisati
 const dbName = 'watchAssignator'; 
 
 MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {  
-    if (err) throw err;                                           //connexion à la base de donnée de la collection dbgenerator
-    db = client.db(dbName);                                       //Inialisation d'une variable db qui prend la valeur de la collection de la base de données dbgenerator
+    if (err) throw err;                                           //connexion à la base de donnée de la collection watch assignator
+    db = client.db(dbName);                                       //Inialisation d'une variable db qui prend la valeur de la collection de la base de données watch assignator
     var dbtest = client.db("watchAssignator"); 
 
 
@@ -44,44 +44,51 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
             res.send("OK");
         });
     });
-});
+
 
     //Project
 
-    app.get('/Project', async function (req, res) {                  //Route pour transmettre les données de la collection groups
-        console.log("GET /Project")
-        let test = await dbtest.collection("Project").find().toArray();
+    app.get('/subject', async function (req, res) {                  //Route pour transmettre les données de la collection subject
+        console.log("GET /subject")
+        let test = await dbtest.collection("subject").find().toArray();
         console.log(test);
         res.json(test);
     });
 
-    app.get('/Project/:name', async function (req, res) {            //Route pour transmettre le nom d'un projet dans la collection groups
-        let test = await dbtest.collection("Project").insertOne({ name: req.params.name }, function (err, result) {
+    app.get('/subject/:name', async function (req, res) {            //Route pour transmettre le nom d'un projet dans la collection subject
+        let test = await dbtest.collection("subject").insertOne({ name: req.params.name }, function (err, result) {
             if (err) throw err;
             res.json(test);
         });
     });
 
-    app.post('/Project', async function (req, res) {                //Route pour récupérer les données de la collection groups
-        let project = req.body;
-        console.log(group);
-        dbtest.collection("Project").insertOne(project, function (err, result) {
+    app.post('/subject', async function (req, res) {                //Route pour récupérer les données de la collection subject
+        let Subject = req.body;
+        console.log(Subject);
+        dbtest.collection("subject").insertOne(Subject, function (err, result) {
             if (err) throw err;
-            console.log("1 project inserted");
+            console.log("1 subject inserted");
             res.json({
                 msg : "Ok"
             });
         })
     })
 
-    app.delete('/Project/:name', function (req, res) {              //Route pour effacer le nom d'un projet
-        dbtest.collection("Project").deleteOne({ name: req.params.name }, function (err, result) {
+    app.delete('/subject/:name', function (req, res) {              //Route pour effacer le nom d'un projet
+        dbtest.collection("subject").deleteOne({ name: req.params.name }, function (err, result) {
             if (err) throw err;
             console.log("1 document deleted");
             res.send("OK");
         })
     });
 
+     app.get('/deadline', async function (req, res) {                  //Route pour transmettre les données de la collection subject
+        console.log("GET /deadline")
+        let test = await dbtest.collection("deadline").find().toArray();
+        console.log(test);
+        res.json(test);
+    });
+});
 
 
 
