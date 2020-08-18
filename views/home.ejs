@@ -8,11 +8,14 @@
 </head>
 
 <header>
+
     <h1>My Tech-watch Assignator</h1>
-    <a class="btn btn-primary" href="http://localhost:8080/students" role="button">Student List</a></button>
-    <button type="button" class="btn btn-secondary">Student List</button>
-    <button type="button" class="btn btn-secondary">Tech Watch Assignation</button>
-    <button type="button" class="btn btn-secondary">History</button>
+    <nav>
+        <a class="btn btn-primary" href="http://localhost:8080/students" role="button">Student List</a></button>
+        <a class="btn btn-primary" href="http://localhost:8080/assigation" role="button">Tech Watch Assignation</a></button>
+        <a class="btn btn-primary" href="http://localhost:8080/history" role="button">History</a></button>
+    </nav>
+
 </header>
 
 <body>
@@ -25,6 +28,12 @@
     next tech-watch. <br>
     Don’t be shy and try to go on diverses part of the website !</p>
 
+        <h5>List of students they will must do a tech-watch soon:</h5>
+    <ul>
+        <% student.forEach(function(student) { %>
+        <li><%= student.name %></li>
+        <% }); %>
+    </ul>
 
 </body>
 

@@ -6,25 +6,14 @@ const ejs = require("ejs");                                                     
 const bodyParser = require("body-parser");                                          //Appel à la biblio de node pour récupérer le module body-parser qui permet de lire le contenu du body d'un fichier
 const qs = require('querystring');   
 
-
 app.use('/public', express.static('public')); 
 
-//RÉCUPERATON DES DONNÉES DE LE ROUTE STUDENT
+//RÉCUPERATON DES DONNÉES DE LE ROUTE STUDENTS
 app.get('/students', async function (req, res) {
     let rec = await fetch(`http://localhost:8000/students`);                        //Route définie préalablement dans l'API
     let testRec = await rec.json();                                                 //Initialisation d'une variable pour récupérer les données de la route
-    //console.log(testRec);
-    // let numberAleaStudent = testRec[Math.floor(Math.random() * testRec.length)];
-    // console.log(numberAleaStudent);
-
-    
-    res.status(200);
-    //res.send(testRec);
-    const ejs_file = fs.readFileSync(__dirname + '/index.js', 'utf-8');          //Lecture du fichier et intégration des données dans le fichier index
-    const html = ejs.render(ejs_file, {                                           //Connexion avec un fichier au format ejs
-        studentsAAA: testRec                                                      //initilisation de la variable étudiant qui apparaitra dans le HTML
-    });
-    res.send(html);
+    res.status(200);                                        
+    res.render("list.ejs" , {studentsAAA: testRec} );
 });
 
 app.use(bodyParser.json());                                                       //Lecture du fichier
@@ -52,7 +41,34 @@ app.post('/students', async function (req, res) {                               
     res.redirect('/students');                                                  //Raffraichit la page
 });
 
+//RÉCUPERATON DES DONNÉES DE LE ROUTE HOME
+app.get('/home', async function (req, res) {
+    let recup = await fetch(`http://localhost:8000/students`);  
+    let sub = await fetch('http://localhost:8000/subject');
+    let subrecup = await sub.json();                     //Route définie préalablement dans l'API
+    let testRecup = await recup.json();                                           //Initialisation d'une variable pour récupérer les données de la route
+    res.status(200); 
+    res.render('home.ejs', {student: testRecup, subject: subrecup});
 
+});
+
+//RÉCUPERATON DES DONNÉES DE LE ROUTE ASSIGNATION
+app.get('/assignation', async function (req, res) {
+    let recup = await fetch(`http://localhost:8000/assignation`);                        //Route définie préalablement dans l'API
+    let testRecup = await recup.json();                                           //Initialisation d'une variable pour récupérer les données de la route
+    res.status(200); 
+    res.send(testRecup);
+
+});
+
+//RÉCUPERATON DES DONNÉES DE LE ROUTE HISTORY
+app.get('/history', async function (req, res) {
+    let recup = await fetch(`http://localhost:8000/history`);                        //Route définie préalablement dans l'API
+    let testRecup = await recup.json();                                           //Initialisation d'une variable pour récupérer les données de la route
+    res.status(200); 
+    res.send(testRecup);
+
+});
 
 
 
