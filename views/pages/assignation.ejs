@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <%- include ('../partials/head') %>
 </head>
 
 <header>
     <h1>My Tech-watch Assignator</h1>
     <nav>
-        <a class="btn btn-primary" href="http://localhost:8080/students" role="button">Student List</a></button>
         <a class="btn btn-primary" href="http://localhost:8080/home" role="button">Home</a></button>
+        <a class="btn btn-primary" href="http://localhost:8080/students" role="button">Student List</a></button>
         <a class="btn btn-primary" href="http://localhost:8080/history" role="button">History</a></button>
     </nav>
-
 </header>
 
 <body>
@@ -37,7 +35,7 @@
             <label for="insertnbrstudent" class="label">Number Students</label>
             <input type="text" placeholder="Project Name" name="project">
             <input type="date" name="deadline" id="start">
-            <input type="text" placeholder="Group Members" name='nbr'>  
+            <input type="text" placeholder="Group Members" name='nbr'>       
             <button type="submit">Create Tech-watch</button>
         </form>
     </div>
@@ -46,7 +44,6 @@
 
     <footer>
         <%- include ('../partials/footer') %>
-
     </footer>
 
 
