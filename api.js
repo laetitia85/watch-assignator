@@ -70,6 +70,8 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
         })
     })
 
+    
+
     app.delete('/subject/:name', function (req, res) {                                                                        //Route pour effacer le nom d'un projet
         dbtest.collection("subject").deleteOne({ name: req.params.name }, function (err, result) {
             if (err) throw err;

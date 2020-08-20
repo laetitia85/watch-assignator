@@ -11,7 +11,7 @@
     <h1>My Tech-watch Assignator</h1>
     <nav>
         <a class="btn btn-primary" href="http://localhost:8080/home" role="button">Home</a></button>
-        <a class="btn btn-primary" href="http://localhost:8080/assigation" role="button">Tech Watch Assignation</a></button>
+        <a class="btn btn-primary" href="http://localhost:8080/assignation" role="button">Tech Watch Assignation</a></button>
         <a class="btn btn-primary" href="http://localhost:8080/history" role="button">History</a></button>
     </nav>
 </header>
@@ -31,7 +31,7 @@
         </form>
     </div>
     <div class="deleteName">
-        <form action="/students" method="DELETE" class="form">
+        <form action="/students-delete" method="POST" class="form">
             <label for="insertname" class="label">Delete student</label>
             <input type="text" placeholder="name" name="deletename">
             <button type="submit">Delete student</button>
