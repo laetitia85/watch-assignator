@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Tech-watch Assignator</title>
+    <%- include ('../partials/head') %>
 </head>
 
 <header>
     <h1>My Tech-watch Assignator</h1>
     <nav>
         <a class="btn btn-primary" href="http://localhost:8080/home" role="button">Home</a></button>
-        <a class="btn btn-primary" href="http://localhost:8080/assignation" role="button">Tech Watch Assignation</a></button>
+        <a class="btn btn-primary" href="http://localhost:8080/assignation" role="button">Tech-watch Assignation</a></button>
         <a class="btn btn-primary" href="http://localhost:8080/history" role="button">History</a></button>
     </nav>
 </header>
@@ -33,15 +30,18 @@
     <div class="deleteName">
         <form action="/students-delete" method="POST" class="form">
             <label for="insertname" class="label">Delete student</label>
-            <input type="text" placeholder="name" name="deletename">
-            <button type="submit">Delete student</button>
+            <select name="deletename" id="">
+                <% studentsAAA.forEach(function(student) { %>
+                <option value="<%= student.name %>"><%= student.name %></option>
+                <% }); %>
+            </select>
+         <button type="submit">Delete student</button>
         </form>
     </div>
 </body>
 
 <footer>
-    <p>Copyright:Davirak & Laetitia</p>
-    <p>Contact: davirak_in@hotmail.fr<br>laetitiae.pinto@laposte.net</p>
+    <%- include ('../partials/footer') %>
 </footer>
 
 </html>

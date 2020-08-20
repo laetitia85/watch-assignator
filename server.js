@@ -13,7 +13,7 @@ app.get('/students', async function (req, res) {
     let rec = await fetch(`http://localhost:8000/students`);                                      //Route définie préalablement dans l'API
     let testRec = await rec.json();                                                              //Initialisation d'une variable pour récupérer les données de la route
     res.status(200);                                        
-    res.render("list.ejs" , {studentsAAA: testRec} );
+    res.render("pages/list.ejs" , {studentsAAA: testRec} );
 });
 
 app.use(bodyParser.json());                                                                     //Lecture du fichier
@@ -46,7 +46,7 @@ app.get('/subject', async function (req, res) {
     let subs = await fetch(`http://localhost:8000/subject`);                                    //Initialisation d'une variable avec les données de la collection subject
     let testRecPro = await subs.json();                                                             //Initialisation d'une variable pour lire les données de la collection subject qui sont en format json
     res.status(200);
-    res.render('history.ejs', {subjectBB: testRecPro});
+    res.render('pages/history.ejs', {subjectBB: testRecPro});
 });
 
 app.post('/subject', async function (req, res) {
@@ -58,7 +58,7 @@ app.post('/subject', async function (req, res) {
     while (aleaListStudents.length) {
     //console.log(aleaListStudents);
     let aleaListStudentsNbr = aleaListStudents.slice(0, req.body.nbr);           // slice() = je prends les "n" premiers élément du tableau
-    }                                                                      
+                                                                         
     aleaListStudentsNbr.forEach(element => {                                     // boucle forEach = pour chaque données du tableau donne-moi seulement le nom de l'étudiant
         console.log(element.name);
     
@@ -86,7 +86,7 @@ app.post('/subject', async function (req, res) {
             console.log('Request failure: ', error);                            //récupération des erreurs
         });
     res.redirect('/subject');                                                    //Raffraichit la page
-});
+}});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -102,7 +102,7 @@ app.get('/home', async function (req, res) {
     let subrecup = await sub.json();                                                            //Route définie préalablement dans l'API
     let testRecup = await recup.json();                                                         //Initialisation d'une variable pour récupérer les données de la route
     res.status(200); 
-    res.render('home.ejs', {student: testRecup, subject: subrecup});
+    res.render('pages/home.ejs', {student: testRecup, subject: subrecup});
 
 });
 
@@ -113,7 +113,7 @@ app.get('/assignation', async function (req, res) {
     // let recrecup = await rec.json();                                            
     let RecSubject = await subs.json();                                                             //Initialisation d'une variable pour lire les données de la collection subject qui sont en format json
     res.status(200);
-    res.render('assignation.ejs', {/*subjectAAA: recrecup ,*/ subjectBBB: RecSubject});                             //Route définie préalablement dans l'API
+    res.render('pages/assignation.ejs', {/*subjectAAA: recrecup ,*/ subjectBBB: RecSubject});                             //Route définie préalablement dans l'API
 
 });
 

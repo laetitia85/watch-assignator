@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Tech-watch Assignator</title>
+    <%- include ('../partials/head') %>
 </head>
 
 <header>
-
     <h1>My Tech-watch Assignator</h1>
     <nav>
         <a class="btn btn-primary" href="http://localhost:8080/students" role="button">Student List</a></button>
-        <a class="btn btn-primary" href="http://localhost:8080/assignation" role="button">Tech Watch Assignation</a></button>
+        <a class="btn btn-primary" href="http://localhost:8080/assignation" role="button">Tech-watch Assignation</a></button>
         <a class="btn btn-primary" href="http://localhost:8080/history" role="button">History</a></button>
     </nav>
-
 </header>
 
 <body>
@@ -38,8 +33,7 @@
 </body>
 
 <footer>
-    <p>Copyright:Davirak & Laetitia</p>
-    <p>Contact: davirak_in@hotmail.fr<br>laetitiae.pinto@laposte.net</p>
+    <%- include ('../partials/footer') %>
 </footer>
 
 </html>

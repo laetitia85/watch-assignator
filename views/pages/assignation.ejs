@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Tech-watch Assignator</title>
+    <%- include ('../partials/head') %>
 </head>
 
 <header>
@@ -38,7 +35,7 @@
             <label for="insertnbrstudent" class="label">Number Students</label>
             <input type="text" placeholder="Project Name" name="project">
             <input type="date" name="deadline" id="start">
-            <input type="text" placeholder="Group Members" name='nbr'>
+            <input type="text" placeholder="Group Members" name='nbr'>       
             <button type="submit">Create Tech-watch</button>
         </form>
     </div>
@@ -46,8 +43,7 @@
     </body> 
 
     <footer>
-        <p>Copyright:Davirak & Laetitia</p>
-        <p>Contact: davirak_in@hotmail.fr<br>laetitiae.pinto@laposte.net</p>
+        <%- include ('../partials/footer') %>
     </footer>
 
 
