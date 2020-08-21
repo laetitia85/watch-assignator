@@ -44,7 +44,8 @@ app.post('/students', async function (req, res) {                               
 //RÉCUPERATON DES DONNÉES DE LE ROUTE SUBJECT
 app.get('/subject', async function (req, res) {
     let subs = await fetch(`http://localhost:8000/subject`);                                    //Initialisation d'une variable avec les données de la collection subject
-    let testRecPro = await subs.json();                                                             //Initialisation d'une variable pour lire les données de la collection subject qui sont en format json
+    let testRecPro = await subs.json();  
+    console.log(testRecPro);                                                           //Initialisation d'une variable pour lire les données de la collection subject qui sont en format json
     res.status(200);
     res.render('pages/history.ejs', {subjectBB: testRecPro});
 });
@@ -52,18 +53,10 @@ app.get('/subject', async function (req, res) {
 app.post('/subject', async function (req, res) {
     let rec = await fetch(`http://localhost:8000/students`);
     let testRec = await rec.json();
-    //console.log(testRec);
-    let aleaListStudents = testRec.sort(() => Math.random() - 0.5);             //randomisation du tableau des étudiants
-
-    while (aleaListStudents.length) {
-    //console.log(aleaListStudents);
-    let aleaListStudentsNbr = aleaListStudents.slice(0, req.body.nbr);           // slice() = je prends les "n" premiers élément du tableau
-                                                                         
-    aleaListStudentsNbr.forEach(element => {                                     // boucle forEach = pour chaque données du tableau donne-moi seulement le nom de l'étudiant
-        console.log(element.name);
+    let aleaListStudents = testRec.sort(() => Math.random() - 0.5);
+    let aleaListStudentsNbr = []
+    aleaListStudentsNbr = aleaListStudents.slice(0, req.body.nbr);           // slice() = je prends les "n" premiers élément du tableau et je l 
     
-    });
-
     fetch(`http://localhost:8000/subject`, {
         method: 'POST',
         headers: {
@@ -72,7 +65,8 @@ app.post('/subject', async function (req, res) {
         },
         body: JSON.stringify({                                                   //Association des valeurs des boutons  (valeur des inputs : name et students)
             name: req.body.project,
-            students: aleaListStudentsNbr
+            students: aleaListStudentsNbr,
+            date : req.body.deadline
         },
         )
     })
@@ -81,19 +75,19 @@ app.post('/subject', async function (req, res) {
         })
         .then(function (success) {
             console.log('Request success: ', success);
+            res.redirect('/assignation'); 
+
         })
         .catch(function (error) {
             console.log('Request failure: ', error);                            //récupération des erreurs
         });
-    res.redirect('/subject');                                                    //Raffraichit la page
-}});
+    
+
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/subject', async function (req,res) {
-
-})
 
 //RÉCUPERATON DES DONNÉES DE LE ROUTE HOME
 app.get('/home', async function (req, res) {

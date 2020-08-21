@@ -44,7 +44,7 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
 
 
         //Project
-        app.get('/subject', async function (req, res) {                                                                 //Route pour transmettre les données de la collection subject
+    app.get('/subject', async function (req, res) {                                                                 //Route pour transmettre les données de la collection subject
         console.log("GET /subject")
         let test = await dbtest.collection("subject").find().toArray();
         console.log(test);
